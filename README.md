@@ -9,7 +9,7 @@ $ python3 WebServer.py <port>
 ##### Start the client(s):
 ```
 $ cd ./client
-$ python3 DataRequest <ip> <port>
+$ python3 DataRequest.py <ip> <port>
 
 ```
 ##### Then we can plot the results:
