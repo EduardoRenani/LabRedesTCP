@@ -2,7 +2,7 @@ from socket import *
 import time
 import sys
 
-PAYLOAD_SIZE = 65536
+PAYLOAD_SIZE = 4096
 MEGA = 10**6
 
 if len(sys.argv) is not 3:
@@ -20,18 +20,7 @@ clientSocket.connect((serverName, serverPort))
 payload = bytearray(PAYLOAD_SIZE)
 
 while 1:
-    # time when the signal is sent
-    t1 = time.time()
     # send data
     clientSocket.send(payload)
-    # time when ACK from server is received
-    t2 = time.time()
-
-    rtt = t2-t1
-    oneWayTripTime = (rtt/2)
-
-    megaBitsPayloadSize = PAYLOAD_SIZE*8/MEGA
-
-    print("Transfer Rate: ", megaBitsPayloadSize/oneWayTripTime, "Mbits/s")
 
 clientSocket.close()
