@@ -1,6 +1,7 @@
 #Import socket module
 from socket import *
-import sys #In order to terminate the program
+import sys 
+import thread
 
 if len(sys.argv) is not 2:
     print("Wrong format. Enter: python WebServer.py <port>")
@@ -23,7 +24,10 @@ print('The Server is ready to receive')
 while 1:
     # Accepts new connections creating connection sockets 
     connectionSocket, addr = serverSocket.accept()
-    # reads payload data
-    sentence = connectionSocket.recv(4096)
     
+    # reads payload data
+    while 1:
+        payload = connectionSocket.recv(65536)
+        print('payload received: ', sys.getsizeof(payload), 'bits')
+
     print('packet received')

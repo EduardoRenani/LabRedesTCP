@@ -1,7 +1,8 @@
 from socket import *
 import time
+import sys
 
-PAYLOAD_SIZE = 4096
+PAYLOAD_SIZE = 65536
 MEGA = 10**6
 
 if len(sys.argv) is not 3:
